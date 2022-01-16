@@ -1,4 +1,4 @@
-import React, { FC, ChangeEventHandler, FormEventHandler } from "react";
+import React, { FC, ChangeEventHandler, FormEventHandler } from 'react';
 
 interface FormProps {
   handleChange: ChangeEventHandler;
