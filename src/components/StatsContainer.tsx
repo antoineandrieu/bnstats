@@ -5,6 +5,7 @@ const StatsContainer: FC = () => {
   const [expDate, setExpDate] = useState('');
   const [username, setUsername] = useState('');
   const [namespace, setNamespace] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleUsernameChange = async (event: ChangeEvent) => {
     const target = event.target as HTMLInputElement;
@@ -14,6 +15,7 @@ const StatsContainer: FC = () => {
 
   const getExpDate = async (event: FormEvent) => {
     event.preventDefault();
+    setIsLoading(true);
     try {
       const res = await fetch('/api/bns', {
         body: JSON.stringify({
@@ -30,12 +32,13 @@ const StatsContainer: FC = () => {
     } catch (e) {
       console.error(e);
     }
+    setIsLoading(false);
   };
 
   return (
     <>
       <Form handleChange={handleUsernameChange} handleSubmit={getExpDate} />
-      <div>{expDate}</div>
+      <div>{isLoading ? 'loading...' : expDate}</div>
     </>
   );
 };
