@@ -1,5 +1,6 @@
 import React, { ChangeEvent, FC, FormEvent, useState } from 'react';
 import Form from './Form';
+import { Signin } from './Signin';
 
 const StatsContainer: FC = () => {
   const [expDate, setExpDate] = useState('');
@@ -37,6 +38,7 @@ const StatsContainer: FC = () => {
 
   return (
     <>
+      <Signin />
       <Form handleChange={handleUsernameChange} handleSubmit={getExpDate} />
       <div>{isLoading ? 'loading...' : expDate}</div>
     </>
