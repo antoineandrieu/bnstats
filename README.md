@@ -59,6 +59,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 - [ ] Check the block time value
 - [ ] Improve the UI
 - [ ] Sanitize the input
+- [ ] Check if user is already signed in
 - [ ] Fix: when reloading the page the username is not set to existing one
 - [ ] Display all the previous owners of the Stacks id
 - [ ] Login with the Hiro wallet extension and username is being fetched directly from there

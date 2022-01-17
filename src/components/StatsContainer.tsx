@@ -1,6 +1,7 @@
 import React, { ChangeEvent, FC, FormEvent, useState } from 'react';
 import Form from './Form';
 import { Signin } from './Signin';
+import { getUserData } from '../auth';
 
 const StatsContainer: FC = () => {
   const [expDate, setExpDate] = useState('');
@@ -12,6 +13,7 @@ const StatsContainer: FC = () => {
     const target = event.target as HTMLInputElement;
     setUsername(target.value.split('.')[0]);
     setNamespace(target.value.split('.')[1]);
+    console.log(getUserData());
   };
 
   const getExpDate = async (event: FormEvent) => {

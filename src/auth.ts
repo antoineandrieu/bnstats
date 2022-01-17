@@ -3,7 +3,7 @@ import { showConnect } from '@stacks/connect';
 
 const appConfig = new AppConfig(['store_write']);
 
-const session = new UserSession({ appConfig });
+const stackSession = new UserSession({ appConfig });
 
 const authenticate = () => {
   showConnect({
@@ -12,11 +12,31 @@ const authenticate = () => {
       icon: window.location.origin + '/logo.svg',
     },
     redirectTo: '/',
-    userSession: session,
-    onFinish: () => {
-      console.log(session.loadUserData());
+    userSession: stackSession,
+    onFinish: async () => {
+      const username = await getUsername(
+        stackSession.loadUserData().profile.stxAddress.mainnet
+      );
+      // TODO: store username in local session
     },
   });
+};
+
+// Workaround for https://github.com/hirosystems/stacks.js/issues/1144
+const getUsername = async (address: string) => {
+  try {
+    const response = await fetch(
+      `https://stacks-node-api.mainnet.stacks.co/v1/addresses/stacks/${address}`,
+      {
+        method: 'GET',
+        headers: {},
+      }
+    );
+    const data = await response.json();
+    return data.names[0];
+  } catch (error) {
+    console.error(error);
+  }
 };
 
 const getUserData = () => {
