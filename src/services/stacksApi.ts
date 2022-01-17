@@ -1,24 +1,24 @@
+import { StacksMainnet } from '@stacks/network';
 import {
-  callReadOnlyFunction,
   bufferCVFromString,
+  callReadOnlyFunction,
   cvToJSON,
 } from '@stacks/transactions';
-('@stacks/network');
+
 // mainnet bns contract address
 const BNS_CONTRACT_ADDRESS = 'SP000000000000000000002Q6VF78';
 const BNS_CONTRACT_NAME = 'bns';
-import { StacksMainnet } from '@stacks/network';
 
-const readContract = async () => {
+const readContract = async (username: string, namespace: string) => {
   // convert to Clarity values
   const functionArgs = [
-    bufferCVFromString('btc'),
-    bufferCVFromString('blogging'),
+    bufferCVFromString(namespace),
+    bufferCVFromString(username),
   ];
   const network = new StacksMainnet();
 
   try {
-    const result = await callReadOnlyFunction({
+    const cvResult = await callReadOnlyFunction({
       contractAddress: BNS_CONTRACT_ADDRESS,
       contractName: BNS_CONTRACT_NAME,
       functionName: 'name-resolve',
@@ -26,12 +26,12 @@ const readContract = async () => {
       network,
       senderAddress: BNS_CONTRACT_ADDRESS,
     });
-    const expDate = cvToJSON(result).value.value;
+    const result = cvToJSON(cvResult).value.value;
     // 2013 = ERR_NAME_NOT_FOUND
-    return expDate == 2013 ? expDate : false;
+    return result != 2013 ? result : false;
   } catch (e) {
     console.error(e);
   }
-};
+;
 
 export default readContract;

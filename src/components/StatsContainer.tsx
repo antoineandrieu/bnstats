@@ -1,13 +1,15 @@
-import React, { FC, ChangeEvent, FormEvent, useState } from 'react';
+import React, { ChangeEvent, FC, FormEvent, useState } from 'react';
 import Form from './Form';
 
 const StatsContainer: FC = () => {
   const [expDate, setExpDate] = useState('');
   const [username, setUsername] = useState('');
+  const [namespace, setNamespace] = useState('');
 
   const handleUsernameChange = async (event: ChangeEvent) => {
     const target = event.target as HTMLInputElement;
-    setUsername(target.value);
+    setUsername(target.value.split('.')[0]);
+    setNamespace(target.value.split('.')[1]);
   };
 
   const getExpDate = async (event: FormEvent) => {
@@ -16,6 +18,7 @@ const StatsContainer: FC = () => {
       const res = await fetch('/api/bns', {
         body: JSON.stringify({
           username,
+          namespace,
         }),
         headers: {
           'Content-Type': 'application/json',
