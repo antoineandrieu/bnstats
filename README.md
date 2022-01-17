@@ -20,7 +20,7 @@ I sent some requests and noticed that `expire_block` is always equal to 0 for do
 
 I ended up calling the [smart contract function](https://hirosystems.github.io/stacks-blockchain-api/#operation/call_read_only_function) directly to get the expiration block info.
 The arguments of the function has to be in Clarity format. Thus I decided to use the [stacks transactions package](https://www.npmjs.com/package/@stacks/transactions) to do the call.
-There is also an [API client](https://www.npmjs.com/package/@stacks/blockchain-api-client) available. But as the transactions package documentation has an example of our use case, I decided to use it instead of the API client.
+There is also an [API client](https://www.npmjs.com/package/@stacks/blockchain-api-client) or [BNS specific wrapper](https://www.npmjs.com/package/@stacks/bns) available. But as the transactions package documentation has an example of our use case, I decided to use it instead of the API client.
 
 #### Expire Block
 
