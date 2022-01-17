@@ -25,8 +25,8 @@ There is also an [API client](https://www.npmjs.com/package/@stacks/blockchain-a
 #### Expire Block
 
 To convert the `expire_block` value to an human readable time, we need to apply the [formula](https://bitcoin.stackexchange.com/questions/93919/how-to-create-block-height-to-unix-time-converter):
-`FIRST_BLOCK_TIME + expire_block * BLOCK_TIME * 1000`
-The network block time can be found with the [stacks blockchain API](https://hirosystems.github.io/stacks-blockchain-api/#operation/get_network_block_times). From the documentation, this value can change over time, but the purpose of this exercice, I will hardcode the given value for the mainnet. Before rolling out a production app, we will add the call to be sure of the blocktime value.
+`FIRST_BLOCK_TIME + expire_block * BLOCK_TIME * 1000`.
+The network block time can be found with the [stacks blockchain API](https://hirosystems.github.io/stacks-blockchain-api/#operation/get_network_block_times). From the documentation, this value can change over time, but the purpose of this exercice, I hardcoded the given value for the mainnet. Before rolling out a production app, we will add the call to be sure of the blocktime value.
 
 ### Stack
 
@@ -56,6 +56,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 ## Roadmap
 
+- [ ] Check the block time value
 - [ ] Improve the UI
 - [ ] Sanitize the input
 - [ ] Display all the previous owners of the Stacks id
