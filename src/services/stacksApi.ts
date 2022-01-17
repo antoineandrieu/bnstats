@@ -32,6 +32,6 @@ const readContract = async (username: string, namespace: string) => {
   } catch (e) {
     console.error(e);
   }
-;
+};
 
 export default readContract;
