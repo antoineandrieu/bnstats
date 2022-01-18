@@ -1,9 +1,17 @@
 import React, { ChangeEvent, FC, FormEvent, useEffect, useState } from 'react';
+import styled from 'styled-components';
 import Form from './Form';
 import { Signin } from './Signin';
 import { getUserData } from '../auth';
+import Title from './Title';
 
-const StatsContainer: FC = () => {
+const MainContainer = styled.div`
+  display: grid;
+  min-height: 90vh;
+  grid-template-rows: 40% 60%;
+`;
+
+const Index: FC = () => {
   const [expDate, setExpDate] = useState('');
   const [bnsId, setBnsId] = useState('');
   const [username, setUsername] = useState('');
@@ -54,16 +62,18 @@ const StatsContainer: FC = () => {
   };
 
   return (
-    <>
+    <MainContainer>
+      <Title />
+
       <Signin authCallback={authCallback} />
       <Form
         input={bnsId}
         handleChange={handleBnsIdChange}
         handleSubmit={getExpDate}
       />
-      <div>{isLoading ? 'loading...' : expDate}</div>
-    </>
+      <div>{isLoading ? 'loading...' : `expires at ${expDate}`}</div>
+    </MainContainer>
   );
 };
 
-export default StatsContainer;
+export default Index;

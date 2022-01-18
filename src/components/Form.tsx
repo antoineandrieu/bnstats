@@ -1,4 +1,7 @@
 import React, { FC, ChangeEventHandler, FormEventHandler } from 'react';
+import styled from 'styled-components';
+
+const StyledForm = styled.form``;
 
 interface FormProps {
   input: string;
@@ -12,7 +15,7 @@ const Form: FC<FormProps> = ({
   handleSubmit,
 }: FormProps) => {
   return (
-    <form onSubmit={handleSubmit}>
+    <StyledForm onSubmit={handleSubmit}>
       <label htmlFor="username">Stacks BNS Id</label>
       <input
         id="bnsid"
@@ -24,7 +27,7 @@ const Form: FC<FormProps> = ({
         value={input}
       />
       <button type="submit">Read Info</button>
-    </form>
+    </StyledForm>
   );
 };
 
