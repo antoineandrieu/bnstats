@@ -15,8 +15,8 @@ const StatsContainer: FC = () => {
     const userData = getUserData();
     if (userData) {
       setBnsId(userData.username);
-      setUsername(bnsId.split('.')[0]);
-      setNamespace(bnsId.split('.')[1]);
+      setUsername(userData.username.split('.')[0]);
+      setNamespace(userData.username.split('.')[1]);
     }
   }, [isSignedin]);
 
@@ -24,8 +24,9 @@ const StatsContainer: FC = () => {
     setIsSignedin(true);
   };
 
-  const handleUsernameChange = async (event: ChangeEvent) => {
+  const handleBnsIdChange = async (event: ChangeEvent) => {
     const target = event.target as HTMLInputElement;
+    setBnsId(target.value);
     setUsername(target.value.split('.')[0]);
     setNamespace(target.value.split('.')[1]);
   };
@@ -57,7 +58,7 @@ const StatsContainer: FC = () => {
       <Signin authCallback={authCallback} />
       <Form
         input={bnsId}
-        handleChange={handleUsernameChange}
+        handleChange={handleBnsIdChange}
         handleSubmit={getExpDate}
       />
       <div>{isLoading ? 'loading...' : expDate}</div>
