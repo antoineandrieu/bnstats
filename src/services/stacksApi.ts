@@ -34,4 +34,21 @@ const readContract = async (username: string, namespace: string) => {
   }
 };
 
-export default readContract;
+// Get username from Stacks API, only work for the mainnet
+const getUsername = async (address: string) => {
+  try {
+    const response = await fetch(
+      `https://stacks-node-api.mainnet.stacks.co/v1/addresses/stacks/${address}`,
+      {
+        method: 'GET',
+        headers: {},
+      }
+    );
+    const data = await response.json();
+    return data.names[0];
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export { readContract, getUsername };

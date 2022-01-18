@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import readContract from '../../services/stacksApi';
+import { readContract } from '../../services/stacksApi';
 import convertDate from '../../utils';
 
 type Data = {

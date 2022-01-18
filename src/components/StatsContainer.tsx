@@ -1,19 +1,33 @@
-import React, { ChangeEvent, FC, FormEvent, useState } from 'react';
+import React, { ChangeEvent, FC, FormEvent, useEffect, useState } from 'react';
 import Form from './Form';
 import { Signin } from './Signin';
 import { getUserData } from '../auth';
 
 const StatsContainer: FC = () => {
   const [expDate, setExpDate] = useState('');
+  const [bnsId, setBnsId] = useState('');
   const [username, setUsername] = useState('');
   const [namespace, setNamespace] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [isSignedin, setIsSignedin] = useState(false);
+
+  useEffect(() => {
+    const userData = getUserData();
+    if (userData) {
+      setBnsId(userData.username);
+      setUsername(bnsId.split('.')[0]);
+      setNamespace(bnsId.split('.')[1]);
+    }
+  }, [isSignedin]);
+
+  const authCallback = () => {
+    setIsSignedin(true);
+  };
 
   const handleUsernameChange = async (event: ChangeEvent) => {
     const target = event.target as HTMLInputElement;
     setUsername(target.value.split('.')[0]);
     setNamespace(target.value.split('.')[1]);
-    console.log(getUserData());
   };
 
   const getExpDate = async (event: FormEvent) => {
@@ -40,8 +54,12 @@ const StatsContainer: FC = () => {
 
   return (
     <>
-      <Signin />
-      <Form handleChange={handleUsernameChange} handleSubmit={getExpDate} />
+      <Signin authCallback={authCallback} />
+      <Form
+        input={bnsId}
+        handleChange={handleUsernameChange}
+        handleSubmit={getExpDate}
+      />
       <div>{isLoading ? 'loading...' : expDate}</div>
     </>
   );

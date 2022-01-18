@@ -1,21 +1,27 @@
 import React, { FC, ChangeEventHandler, FormEventHandler } from 'react';
 
 interface FormProps {
+  input: string;
   handleChange: ChangeEventHandler;
   handleSubmit: FormEventHandler;
 }
 
-const Form: FC<FormProps> = ({ handleChange, handleSubmit }: FormProps) => {
+const Form: FC<FormProps> = ({
+  input,
+  handleChange,
+  handleSubmit,
+}: FormProps) => {
   return (
     <form onSubmit={handleSubmit}>
-      <label htmlFor="username">Stacks BNS Username</label>
+      <label htmlFor="username">Stacks BNS Id</label>
       <input
-        id="username"
-        name="username"
+        id="bnsid"
+        name="bnsid"
         type="text"
-        autoComplete="username"
+        autoComplete="bnsid"
         required
         onChange={handleChange}
+        value={input}
       />
       <button type="submit">Read Info</button>
     </form>
