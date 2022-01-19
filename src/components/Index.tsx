@@ -1,14 +1,14 @@
 import React, { ChangeEvent, FC, FormEvent, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import Form from './Form';
-import { Signin } from './Signin';
 import { getUserData } from '../auth';
-import Title from './Title';
+import DataContainer from './DataContainer';
 
 const MainContainer = styled.div`
   display: grid;
-  min-height: 90vh;
-  grid-template-rows: 40% 60%;
+  grid-template-columns: 1fr 1fr;
+  margin-top: auto;
+  margin-bottom: auto;
 `;
 
 const Index: FC = () => {
@@ -63,15 +63,13 @@ const Index: FC = () => {
 
   return (
     <MainContainer>
-      <Title />
-
-      <Signin authCallback={authCallback} />
       <Form
         input={bnsId}
         handleChange={handleBnsIdChange}
         handleSubmit={getExpDate}
+        authCallback={authCallback}
       />
-      <div>{isLoading ? 'loading...' : `expires at ${expDate}`}</div>
+      <DataContainer isLoading={isLoading} expDate={expDate} />
     </MainContainer>
   );
 };

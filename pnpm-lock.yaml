@@ -12,6 +12,7 @@ specifiers:
   '@types/node': 17.0.8
   '@types/react': 17.0.38
   '@types/styled-components': ^5.1.20
+  babel-plugin-styled-components: ^2.0.2
   eslint: 8.6.0
   eslint-config-next: 12.0.8
   next: 12.0.8
@@ -40,6 +41,7 @@ devDependencies:
   '@types/node': 17.0.8
   '@types/react': 17.0.38
   '@types/styled-components': 5.1.20
+  babel-plugin-styled-components: 2.0.2_styled-components@5.3.3
   eslint: 8.6.0
   eslint-config-next: 12.0.8_7f21bb180a1c4d161d5e7dba1f01d17e
   typescript: 4.5.4
@@ -95,7 +97,6 @@ packages:
     engines: {node: '>=6.9.0'}
     dependencies:
       '@babel/types': 7.16.8
-    dev: false
 
   /@babel/helper-compilation-targets/7.16.7_@babel+core@7.16.7:
     resolution: {integrity: sha512-mGojBwIWcwGD6rfqgRXVlVYmPAv7eOpIemUG3dGnDdCY4Pae70ROij3XmfrH6Fa1h1aiDylpglbZyktfzyo/hA==}
@@ -145,7 +146,6 @@ packages:
     engines: {node: '>=6.9.0'}
     dependencies:
       '@babel/types': 7.16.8
-    dev: false
 
   /@babel/helper-module-transforms/7.16.7:
     resolution: {integrity: sha512-gaqtLDxJEFCeQbYp9aLAefjhkKdjKcdh6DB7jniIGU3Pz52WAmP268zK0VgPz9hUNkMSYeH976K2/Y6yPadpng==}
@@ -185,7 +185,6 @@ packages:
   /@babel/helper-validator-identifier/7.16.7:
     resolution: {integrity: sha512-hsEnFemeiW4D08A5gUAZxLBTXpZ39P+a+DGDsHw1yxqyQ/jzFEnxf5uTEGp+3bzAbNOxU1paTgYS4ECU/IgfDw==}
     engines: {node: '>=6.9.0'}
-    dev: false
 
   /@babel/helper-validator-option/7.16.7:
     resolution: {integrity: sha512-TRtenOuRUVo9oIQGPC5G9DgK4743cdxvtOw0weQNpZXaS16SCBi5MNjZF8vba3ETURjZpTbVn7Vvcf2eAwFozQ==}
@@ -302,7 +301,6 @@ packages:
     dependencies:
       '@babel/helper-validator-identifier': 7.16.7
       to-fast-properties: 2.0.0
-    dev: false
 
   /@emotion/is-prop-valid/0.8.8:
     resolution: {integrity: sha512-u5WtneEAr5IDG2Wv65yhunPSMLIpuKsbuOktRojfrEiEvRyC85LgPMZI63cr7NUqT8ZIGdSVg8ZKGxIug4lXcA==}
@@ -1023,11 +1021,9 @@ packages:
       babel-plugin-syntax-jsx: 6.18.0
       lodash: 4.17.21
       styled-components: 5.3.3_281a4fa50a045c9112baf635f3bc27a7
-    dev: false
 
   /babel-plugin-syntax-jsx/6.18.0:
     resolution: {integrity: sha1-CvMqmm4Tyno/1QaeYtew9Y0NiUY=}
-    dev: false
 
   /backo2/1.0.2:
     resolution: {integrity: sha1-MasayLEpNjRj41s+u2n038+6eUc=}
@@ -2266,7 +2262,6 @@ packages:
 
   /lodash/4.17.21:
     resolution: {integrity: sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==}
-    dev: false
 
   /loose-envify/1.4.0:
     resolution: {integrity: sha512-lyuxPGr/Wfhrlem2CL/UcnUc1zcqKAImBDzukY7Y5F/yQiNdko6+fRLevlw1HgMySw7f611UIY408EtxRSoK3Q==}
@@ -3041,7 +3036,6 @@ packages:
   /to-fast-properties/2.0.0:
     resolution: {integrity: sha1-3F5pjL0HkmW8c+A3doGk5Og/YW4=}
     engines: {node: '>=4'}
-    dev: false
 
   /to-regex-range/5.0.1:
     resolution: {integrity: sha512-65P7iz6X5yEr1cwcgvQxbbIw7Uk3gOy5dIdtZ4rDveLqhrdJP+Li/Hx6tyK0NEb+2GCyneCMJiGqrADCSNk8sQ==}
